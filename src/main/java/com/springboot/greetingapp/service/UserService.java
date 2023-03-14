@@ -36,12 +36,14 @@ public class UserService {
         User result = userRepository.findById(id).get(); // by using findById() we are storing id variable & .get() is to get that id. Storing in result obj.
         result.setFirstName(user.getFirstName()); //  setter method is used to set that fisrt name.
         result.setLastName(user.getLastName());
+        result.setId(user.getId());
         userRepository.save(result); // save is inbuilt repo method that is storing result
         return result;
     }
 
-    public void deleteById(Long id) {
+    public String deleteById(Long id) {
          userRepository.deleteById(id);
+         return "Data is Deleted";
     }
     }
 

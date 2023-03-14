@@ -33,13 +33,14 @@ public class UserController {
     }
 
     @GetMapping("/getall")
-    public List<User> showall(){
+    public List<User> showAll(){
     List<User> data = userService.allDetails();
     return data;
     }
 
     @PutMapping("/edit/{id}")
-    public User editGreetingById(@PathVariable long id, @RequestBody User user) {
+    public User editGreetingById(@PathVariable long id, @RequestBody User user) //requestbody is used to chnage data in json
+    {
         return userService.editGreetingById(id,user);
     }
 
@@ -50,9 +51,9 @@ public class UserController {
 //    }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable("id") Long Id){
-        userService.deleteById(Id);
-        return new ResponseEntity<>("User successfully deleted!", HttpStatus.OK);
+    public String deleteById(@PathVariable Long Id){
+       return userService.deleteById(Id);
+
     }
 
 
